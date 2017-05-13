@@ -7301,6 +7301,11 @@ func (m *PodSecurityContext) MarshalTo(dAtA []byte) (int, error) {
 		i++
 		i = encodeVarintGenerated(dAtA, i, uint64(*m.FSGroup))
 	}
+	if m.RunAsGroup != nil {
+		dAtA[i] = 0x30
+		i++
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.RunAsGroup))
+	}
 	return i, nil
 }
 
@@ -9387,6 +9392,11 @@ func (m *SecurityContext) MarshalTo(dAtA []byte) (int, error) {
 			dAtA[i] = 0
 		}
 		i++
+	}
+	if m.RunAsGroup != nil {
+		dAtA[i] = 0x40
+		i++
+		i = encodeVarintGenerated(dAtA, i, uint64(*m.RunAsGroup))
 	}
 	return i, nil
 }
@@ -12860,6 +12870,9 @@ func (m *PodSecurityContext) Size() (n int) {
 	if m.FSGroup != nil {
 		n += 1 + sovGenerated(uint64(*m.FSGroup))
 	}
+	if m.RunAsGroup != nil {
+		n += 1 + sovGenerated(uint64(*m.RunAsGroup))
+	}
 	return n
 }
 
@@ -13606,6 +13619,9 @@ func (m *SecurityContext) Size() (n int) {
 	}
 	if m.AllowPrivilegeEscalation != nil {
 		n += 2
+	}
+	if m.RunAsGroup != nil {
+		n += 1 + sovGenerated(uint64(*m.RunAsGroup))
 	}
 	return n
 }
@@ -15826,6 +15842,7 @@ func (this *PodSecurityContext) String() string {
 		`RunAsNonRoot:` + valueToStringGenerated(this.RunAsNonRoot) + `,`,
 		`SupplementalGroups:` + fmt.Sprintf("%v", this.SupplementalGroups) + `,`,
 		`FSGroup:` + valueToStringGenerated(this.FSGroup) + `,`,
+		`RunAsGroup:` + valueToStringGenerated(this.RunAsGroup) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -16441,6 +16458,7 @@ func (this *SecurityContext) String() string {
 		`RunAsNonRoot:` + valueToStringGenerated(this.RunAsNonRoot) + `,`,
 		`ReadOnlyRootFilesystem:` + valueToStringGenerated(this.ReadOnlyRootFilesystem) + `,`,
 		`AllowPrivilegeEscalation:` + valueToStringGenerated(this.AllowPrivilegeEscalation) + `,`,
+		`RunAsGroup:` + valueToStringGenerated(this.RunAsGroup) + `,`,
 		`}`,
 	}, "")
 	return s
@@ -37969,6 +37987,26 @@ func (m *PodSecurityContext) Unmarshal(dAtA []byte) error {
 				}
 			}
 			m.FSGroup = &v
+		case 6:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field RunAsGroup", wireType)
+			}
+			var v int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.RunAsGroup = &v
 		default:
 			iNdEx = preIndex
 			skippy, err := skipGenerated(dAtA[iNdEx:])
@@ -45524,6 +45562,26 @@ func (m *SecurityContext) Unmarshal(dAtA []byte) error {
 			}
 			b := bool(v != 0)
 			m.AllowPrivilegeEscalation = &b
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field RunAsGroup", wireType)
+			}
+			var v int64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowGenerated
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				v |= (int64(b) & 0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			m.RunAsGroup = &v
 		default:
 			iNdEx = preIndex
 			skippy, err := skipGenerated(dAtA[iNdEx:])

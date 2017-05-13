@@ -473,6 +473,7 @@ func Convert_core_SecurityContext_To_v1_SecurityContext(in *core.SecurityContext
 		out.SELinuxOptions = nil
 	}
 	out.RunAsUser = in.RunAsUser
+	out.RunAsGroup = in.RunAsGroup
 	out.RunAsNonRoot = in.RunAsNonRoot
 	out.ReadOnlyRootFilesystem = in.ReadOnlyRootFilesystem
 	out.AllowPrivilegeEscalation = in.AllowPrivilegeEscalation
@@ -490,6 +491,7 @@ func Convert_core_PodSecurityContext_To_v1_PodSecurityContext(in *core.PodSecuri
 		out.SELinuxOptions = nil
 	}
 	out.RunAsUser = in.RunAsUser
+	out.RunAsGroup = in.RunAsGroup
 	out.RunAsNonRoot = in.RunAsNonRoot
 	out.FSGroup = in.FSGroup
 	return nil
@@ -506,6 +508,7 @@ func Convert_v1_PodSecurityContext_To_core_PodSecurityContext(in *v1.PodSecurity
 		out.SELinuxOptions = nil
 	}
 	out.RunAsUser = in.RunAsUser
+	out.RunAsGroup = in.RunAsGroup
 	out.RunAsNonRoot = in.RunAsNonRoot
 	out.FSGroup = in.FSGroup
 	return nil
