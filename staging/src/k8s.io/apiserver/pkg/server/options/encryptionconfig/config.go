@@ -110,6 +110,9 @@ func GetPrefixTransformers(config *ResourceConfig) ([]value.PrefixTransformer, e
 		var err error
 
 		if provider.AESGCM != nil {
+			if found == true {
+				return result, fmt.Errorf("more than one provider specified in a single element, should split into different list elements")
+			}
 			transformer, err = GetAESPrefixTransformer(provider.AESGCM, aestransformer.NewGCMTransformer, aesGCMTransformerPrefixV1)
 			if err != nil {
 				return result, err
@@ -150,7 +153,7 @@ func GetPrefixTransformers(config *ResourceConfig) ([]value.PrefixTransformer, e
 		result = append(result, transformer)
 
 		if found == false {
-			return result, fmt.Errorf("invalid provider configuration provided")
+			return result, fmt.Errorf("invalid provider configuration: at least one provider must be specified")
 		}
 	}
 	return result, nil
