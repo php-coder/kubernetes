@@ -41,6 +41,7 @@ import (
 	eventsv1beta1 "k8s.io/api/events/v1beta1"
 	extensionsapiv1beta1 "k8s.io/api/extensions/v1beta1"
 	networkingapiv1 "k8s.io/api/networking/v1"
+	pspv1beta1 "k8s.io/api/podsecuritypolicy/v1beta1"
 	policyapiv1beta1 "k8s.io/api/policy/v1beta1"
 	rbacv1 "k8s.io/api/rbac/v1"
 	rbacv1beta1 "k8s.io/api/rbac/v1beta1"
@@ -475,6 +476,7 @@ func DefaultAPIResourceConfigSource() *serverstorage.ResourceConfig {
 		appsv1beta2.SchemeGroupVersion,
 		appsv1.SchemeGroupVersion,
 		policyapiv1beta1.SchemeGroupVersion,
+		pspv1beta1.SchemeGroupVersion,
 		rbacv1.SchemeGroupVersion,
 		rbacv1beta1.SchemeGroupVersion,
 		storageapiv1.SchemeGroupVersion,
