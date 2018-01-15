@@ -69,6 +69,7 @@ import (
 	"k8s.io/kubernetes/pkg/apis/events"
 	"k8s.io/kubernetes/pkg/apis/extensions"
 	"k8s.io/kubernetes/pkg/apis/networking"
+	psp "k8s.io/kubernetes/pkg/apis/podsecuritypolicy"
 	"k8s.io/kubernetes/pkg/apis/storage"
 	"k8s.io/kubernetes/pkg/capabilities"
 	"k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset"
@@ -576,9 +577,11 @@ func BuildStorageFactory(s *options.ServerRunOptions) (*serverstorage.DefaultSto
 
 	storageFactory.AddCohabitatingResources(networking.Resource("networkpolicies"), extensions.Resource("networkpolicies"))
 
-	// keep Deployments, Daemonsets and ReplicaSets in extensions for backwards compatibility, we'll have to migrate at some point, eventually
+	// keep Deployments, Daemonsets, ReplicaSets and PodSecurityPolicies in extensions for backwards compatibility,
+	// we'll have to migrate at some point, eventually
 	storageFactory.AddCohabitatingResources(extensions.Resource("deployments"), apps.Resource("deployments"))
 	storageFactory.AddCohabitatingResources(extensions.Resource("daemonsets"), apps.Resource("daemonsets"))
+	storageFactory.AddCohabitatingResources(extensions.Resource("podsecuritypolicies"), psp.Resource("podsecuritypolicies"))
 	storageFactory.AddCohabitatingResources(extensions.Resource("replicasets"), apps.Resource("replicasets"))
 	storageFactory.AddCohabitatingResources(api.Resource("events"), events.Resource("events"))
 	for _, override := range s.Etcd.EtcdServersOverrides {
