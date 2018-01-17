@@ -19,6 +19,7 @@ package podsecuritypolicy
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
+	"k8s.io/kubernetes/pkg/apis/extensions"
 )
 
 // GroupName is the group name use in this package.
@@ -45,8 +46,8 @@ var (
 // Adds the list of known types to api.Scheme.
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
-		&PodSecurityPolicy{},
-		&PodSecurityPolicyList{},
+		&extensions.PodSecurityPolicy{},
+		&extensions.PodSecurityPolicyList{},
 	)
 	return nil
 }
