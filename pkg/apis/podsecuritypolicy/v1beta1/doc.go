@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 // +k8s:conversion-gen=k8s.io/kubernetes/pkg/apis/podsecuritypolicy
+// +k8s:conversion-gen=k8s.io/kubernetes/pkg/apis/extensions
 // +k8s:conversion-gen-external-types=k8s.io/api/podsecuritypolicy/v1beta1
 // +groupName=podsecuritypolicy.admission.k8s.io
 // +k8s:defaulter-gen=TypeMeta
