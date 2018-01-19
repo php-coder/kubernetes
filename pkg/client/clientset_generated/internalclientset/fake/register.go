@@ -32,6 +32,7 @@ import (
 	eventsinternalversion "k8s.io/kubernetes/pkg/apis/events"
 	extensionsinternalversion "k8s.io/kubernetes/pkg/apis/extensions"
 	networkinginternalversion "k8s.io/kubernetes/pkg/apis/networking"
+	podsecuritypolicyinternalversion "k8s.io/kubernetes/pkg/apis/podsecuritypolicy"
 	policyinternalversion "k8s.io/kubernetes/pkg/apis/policy"
 	rbacinternalversion "k8s.io/kubernetes/pkg/apis/rbac"
 	schedulinginternalversion "k8s.io/kubernetes/pkg/apis/scheduling"
@@ -74,6 +75,7 @@ func AddToScheme(scheme *runtime.Scheme) {
 	eventsinternalversion.AddToScheme(scheme)
 	extensionsinternalversion.AddToScheme(scheme)
 	networkinginternalversion.AddToScheme(scheme)
+	podsecuritypolicyinternalversion.AddToScheme(scheme)
 	policyinternalversion.AddToScheme(scheme)
 	rbacinternalversion.AddToScheme(scheme)
 	schedulinginternalversion.AddToScheme(scheme)

@@ -36,6 +36,7 @@ import (
 	events_v1beta1 "k8s.io/api/events/v1beta1"
 	extensions_v1beta1 "k8s.io/api/extensions/v1beta1"
 	networking_v1 "k8s.io/api/networking/v1"
+	podsecuritypolicy_v1beta1 "k8s.io/api/podsecuritypolicy/v1beta1"
 	policy_v1beta1 "k8s.io/api/policy/v1beta1"
 	rbac_v1 "k8s.io/api/rbac/v1"
 	rbac_v1alpha1 "k8s.io/api/rbac/v1alpha1"
@@ -194,6 +195,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		// Group=networking.k8s.io, Version=v1
 	case networking_v1.SchemeGroupVersion.WithResource("networkpolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Networking().V1().NetworkPolicies().Informer()}, nil
+
+		// Group=podsecuritypolicy.admission.k8s.io, Version=v1beta1
+	case podsecuritypolicy_v1beta1.SchemeGroupVersion.WithResource("podsecuritypolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Podsecuritypolicy().V1beta1().PodSecurityPolicies().Informer()}, nil
 
 		// Group=policy, Version=v1beta1
 	case policy_v1beta1.SchemeGroupVersion.WithResource("poddisruptionbudgets"):

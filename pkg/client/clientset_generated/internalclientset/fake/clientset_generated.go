@@ -45,6 +45,8 @@ import (
 	fakeextensionsinternalversion "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset/typed/extensions/internalversion/fake"
 	networkinginternalversion "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset/typed/networking/internalversion"
 	fakenetworkinginternalversion "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset/typed/networking/internalversion/fake"
+	podsecuritypolicyinternalversion "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset/typed/podsecuritypolicy/internalversion"
+	fakepodsecuritypolicyinternalversion "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset/typed/podsecuritypolicy/internalversion/fake"
 	policyinternalversion "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset/typed/policy/internalversion"
 	fakepolicyinternalversion "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset/typed/policy/internalversion/fake"
 	rbacinternalversion "k8s.io/kubernetes/pkg/client/clientset_generated/internalclientset/typed/rbac/internalversion"
@@ -151,6 +153,11 @@ func (c *Clientset) Extensions() extensionsinternalversion.ExtensionsInterface {
 // Networking retrieves the NetworkingClient
 func (c *Clientset) Networking() networkinginternalversion.NetworkingInterface {
 	return &fakenetworkinginternalversion.FakeNetworking{Fake: &c.Fake}
+}
+
+// Podsecuritypolicy retrieves the PodsecuritypolicyClient
+func (c *Clientset) Podsecuritypolicy() podsecuritypolicyinternalversion.PodsecuritypolicyInterface {
+	return &fakepodsecuritypolicyinternalversion.FakePodsecuritypolicy{Fake: &c.Fake}
 }
 
 // Policy retrieves the PolicyClient

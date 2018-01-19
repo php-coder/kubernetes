@@ -36,6 +36,7 @@ import (
 	eventsv1beta1 "k8s.io/api/events/v1beta1"
 	extensionsv1beta1 "k8s.io/api/extensions/v1beta1"
 	networkingv1 "k8s.io/api/networking/v1"
+	podsecuritypolicyv1beta1 "k8s.io/api/podsecuritypolicy/v1beta1"
 	policyv1beta1 "k8s.io/api/policy/v1beta1"
 	rbacv1 "k8s.io/api/rbac/v1"
 	rbacv1alpha1 "k8s.io/api/rbac/v1alpha1"
@@ -94,6 +95,7 @@ func AddToScheme(scheme *runtime.Scheme) {
 	eventsv1beta1.AddToScheme(scheme)
 	extensionsv1beta1.AddToScheme(scheme)
 	networkingv1.AddToScheme(scheme)
+	podsecuritypolicyv1beta1.AddToScheme(scheme)
 	policyv1beta1.AddToScheme(scheme)
 	rbacv1.AddToScheme(scheme)
 	rbacv1beta1.AddToScheme(scheme)

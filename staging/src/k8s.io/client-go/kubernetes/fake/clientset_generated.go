@@ -60,6 +60,8 @@ import (
 	fakeextensionsv1beta1 "k8s.io/client-go/kubernetes/typed/extensions/v1beta1/fake"
 	networkingv1 "k8s.io/client-go/kubernetes/typed/networking/v1"
 	fakenetworkingv1 "k8s.io/client-go/kubernetes/typed/networking/v1/fake"
+	podsecuritypolicyv1beta1 "k8s.io/client-go/kubernetes/typed/podsecuritypolicy/v1beta1"
+	fakepodsecuritypolicyv1beta1 "k8s.io/client-go/kubernetes/typed/podsecuritypolicy/v1beta1/fake"
 	policyv1beta1 "k8s.io/client-go/kubernetes/typed/policy/v1beta1"
 	fakepolicyv1beta1 "k8s.io/client-go/kubernetes/typed/policy/v1beta1/fake"
 	rbacv1 "k8s.io/client-go/kubernetes/typed/rbac/v1"
@@ -270,6 +272,16 @@ func (c *Clientset) NetworkingV1() networkingv1.NetworkingV1Interface {
 // Networking retrieves the NetworkingV1Client
 func (c *Clientset) Networking() networkingv1.NetworkingV1Interface {
 	return &fakenetworkingv1.FakeNetworkingV1{Fake: &c.Fake}
+}
+
+// PodsecuritypolicyV1beta1 retrieves the PodsecuritypolicyV1beta1Client
+func (c *Clientset) PodsecuritypolicyV1beta1() podsecuritypolicyv1beta1.PodsecuritypolicyV1beta1Interface {
+	return &fakepodsecuritypolicyv1beta1.FakePodsecuritypolicyV1beta1{Fake: &c.Fake}
+}
+
+// Podsecuritypolicy retrieves the PodsecuritypolicyV1beta1Client
+func (c *Clientset) Podsecuritypolicy() podsecuritypolicyv1beta1.PodsecuritypolicyV1beta1Interface {
+	return &fakepodsecuritypolicyv1beta1.FakePodsecuritypolicyV1beta1{Fake: &c.Fake}
 }
 
 // PolicyV1beta1 retrieves the PolicyV1beta1Client
