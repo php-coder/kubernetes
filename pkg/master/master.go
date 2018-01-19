@@ -83,6 +83,7 @@ import (
 	eventsrest "k8s.io/kubernetes/pkg/registry/events/rest"
 	extensionsrest "k8s.io/kubernetes/pkg/registry/extensions/rest"
 	networkingrest "k8s.io/kubernetes/pkg/registry/networking/rest"
+	psprest "k8s.io/kubernetes/pkg/registry/podsecuritypolicy/rest"
 	policyrest "k8s.io/kubernetes/pkg/registry/policy/rest"
 	rbacrest "k8s.io/kubernetes/pkg/registry/rbac/rest"
 	schedulingrest "k8s.io/kubernetes/pkg/registry/scheduling/rest"
@@ -355,6 +356,7 @@ func (c completedConfig) New(delegationTarget genericapiserver.DelegationTarget)
 		appsrest.RESTStorageProvider{},
 		admissionregistrationrest.RESTStorageProvider{},
 		eventsrest.RESTStorageProvider{TTL: c.ExtraConfig.EventTTL},
+		psprest.RESTStorageProvider{},
 	}
 	m.InstallAPIs(c.ExtraConfig.APIResourceConfigSource, c.GenericConfig.RESTOptionsGetter, restStorageProviders...)
 
